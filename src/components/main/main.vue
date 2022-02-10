@@ -21,7 +21,7 @@
     <el-container>
       <el-header class="header-con">
         <header-bar>
-          <header-user></header-user>
+          <header-user :userInfo="userInfo"></header-user>
           <notice style="margin-right: 20px" size=""></notice>
         </header-bar>
       </el-header>
@@ -40,7 +40,7 @@
 
 <script>
 import "./main.less"
-import {onMounted, computed, getCurrentInstance} from 'vue'
+import {onMounted, computed, getCurrentInstance, reactive, toRefs} from 'vue'
 import { useStore} from 'vuex'
 
 import HeaderBar from "./components/header-bar"
@@ -53,7 +53,9 @@ export default {
   setup(props, context) {
     let store =  useStore()
     const {proxy} = getCurrentInstance()
-
+    const state = reactive({
+      userInfo: JSON.parse(sessionStorage.getItem('userInfo'))
+    })
     let menuList = computed(() => store.getters.menuList).value
     onMounted(() => {
     })
@@ -68,6 +70,7 @@ export default {
       proxy.$router.push({name,params, query})
     }
     return{
+      ...toRefs(state),
       menuList,toPage
     }
   },

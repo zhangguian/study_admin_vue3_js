@@ -19,6 +19,8 @@ import './index.less'
 import './assets/iconfont/color_icon/iconfont.css';
 import './assets/iconfont/color_icon/iconfont.js';
 
+import './mock'
+
 const app = createApp(App)
 
 app.use(store)

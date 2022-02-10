@@ -4,13 +4,13 @@
  * @Author: zhangguian
  * @Date: 2021-12-20 13:04:17
  * @LastEditors: zhangguian
- * @LastEditTime: 2021-12-20 19:41:29
+ * @LastEditTime: 2021-12-27 19:57:48
 -->
 <template>
   <div class="user-avatar-dropdown">
     <el-dropdown @command="handelCommand" size="medium">
       <el-badge is-dot class="badge-item">
-        <el-avatar :src="userAvatar" :size="34"/>
+        <el-avatar :src="userInfo.avatar" :size="34"/>
       </el-badge>
       <template #dropdown>
         <el-dropdown-menu>
@@ -25,23 +25,32 @@
 </template>
 
 <script>
-import {ref, reactive, toRefs,} from 'vue'
+import {ref, reactive, toRefs, h, getCurrentInstance} from 'vue'
+import { ElNotification } from 'element-plus'
 export default {
   name: 'IviewVue3JsUser',
+  props: ['userInfo'],
   setup() {
-    const data = reactive({
-      userAvatar: require('@/assets/avatar.jpg')
-    }) 
+    const {proxy} = getCurrentInstance()
+    const state = reactive({}) 
     
     const handelCommand = (command) => {
       if(command === 'message') {
         console.log('command :>> ', command);
       } else if(command === 'logout') {
+        proxy.$router.push({
+          name: 'login',
+        })
+         window.sessionStorage.clear()
+          ElNotification({
+            title: '退出成功',
+            message: h('i', { style: 'color: orange' }, 'Thank you for coming, Bye'),
+          })
         console.log('command :>> ', command);
       }
     }
     return {
-      ...toRefs(data),
+      ...toRefs(state),
       handelCommand
       }
   }

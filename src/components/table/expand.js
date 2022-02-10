@@ -4,7 +4,7 @@
  * @Author: zhangguian
  * @Date: 2021-12-24 16:55:30
  * @LastEditors: zhangguian
- * @LastEditTime: 2021-12-25 19:55:14
+ * @LastEditTime: 2021-12-27 23:13:54
  */
 import { getCurrentInstance, toRaw, h, onMounted } from "vue"
 // export default {
@@ -65,7 +65,7 @@ import { getCurrentInstance, toRaw, h, onMounted } from "vue"
 // }
 export default {
   name: 'TableExpand',
-  functional: true,
+  // functional: true,
   props: {
       row: Object,
       render: Function,
@@ -75,14 +75,13 @@ export default {
           default: null
       }
   },
-  render: (h, ctx) => {
-    let data = JSON.parse(JSON.stringify(h))
-    console.log('data :>> ', data);
-      const params = {
-          row: data.row,
-          index: data.index
-      };
-      if (ctx.props.column) params.column = ctx.props.column;
-      return ctx.props.render(h, params);
+  render: (ctx) => {
+    // let data = JSON.parse(JSON.stringify(h))
+      // const params = {
+      //     row: ctx.props.row,
+      //     index: ctx.props.index
+      // };
+      // if (ctx.props.column) params.column = ctx.props.column;
+      return  this.render(this.row);
   }
 };

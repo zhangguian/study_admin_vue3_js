@@ -5,10 +5,10 @@
  * @Author: zhangguian
  * @Date: 2021-12-21 15:46:28
  * @LastEditors: zhangguian
- * @LastEditTime: 2021-12-22 13:50:35
+ * @LastEditTime: 2022-01-02 10:57:04
  */
 import RectTable from './rectTable.vue'
-import ATable from './a-table.vue'
+import EleTable from './eleTable.vue'
 export {
-  RectTable,ATable
+  RectTable,EleTable
 }

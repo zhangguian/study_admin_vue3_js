@@ -4,7 +4,7 @@
  * @Author: zhangguian
  * @Date: 2021-12-20 14:10:06
  * @LastEditors: zhangguian
- * @LastEditTime: 2021-12-25 13:53:02
+ * @LastEditTime: 2021-12-27 19:57:57
 -->
 <template>
   <div>
@@ -46,9 +46,9 @@ import {ref, reactive, toRefs,} from 'vue'
 export default {
   name: 'IviewVue3JsNotice',
   setup() {
-    const data = reactive({
+    const state = reactive({
       msgdata: [
-         {label: '我的待办', count: 0, content: '十多年书法的订单'},
+        {label: '我的待办', count: 0, content: '十多年书法的订单'},
         {label: '系统消息', count: 2, content: '时代峻峰男生的减肥呢的身份'},
         {label: '邮件消息', count: 3, content: '时代峻峰男生的减肥呢的身份'},
       ]
@@ -68,7 +68,7 @@ export default {
       console.log('object :>> ', 'obje1132ct');
     }
     return {
-      ...toRefs(data),getmsgLabel,emptyRecord,lookMore,handleClick
+      ...toRefs(state),getmsgLabel,emptyRecord,lookMore,handleClick
     }
   }
 };

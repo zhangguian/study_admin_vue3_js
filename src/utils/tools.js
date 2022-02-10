@@ -4,7 +4,7 @@
  * @Author: zhangguian
  * @Date: 2021-12-18 21:18:16
  * @LastEditors: zhangguian
- * @LastEditTime: 2021-12-21 12:49:02
+ * @LastEditTime: 2022-01-03 20:25:47
  */
 
 
@@ -154,9 +154,13 @@ export const randomNum = (max, min) => {
  * @return {*}
  */
 export const randomStr = () => {
-  const str = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789"
+  const str = "0123456789"
   return str.split("").sort(() => {
     return Math.random() - 0.5  
   })
 }
 
+export const tagType = (type) => {
+  let map = {'0': '','1': 'success', '2': 'warning', '3': 'danger'}
+  return map[type]
+}

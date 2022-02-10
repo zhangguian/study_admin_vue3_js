@@ -4,7 +4,7 @@
  * @Author: zhangguian
  * @Date: 2021-12-23 20:55:42
  * @LastEditors: zhangguian
- * @LastEditTime: 2021-12-23 23:21:52
+ * @LastEditTime: 2021-12-27 15:08:50
  */
 import {createApp} from 'vue'
 import axios from 'axios'
@@ -44,34 +44,34 @@ const err = (error) => {
     let data = error.response.data
     switch (error.response.status) {
       case 403: 
-        ElMessage({showClose: true,message: '拒绝访问',type: 'error',center,duration: '3000'})
+        ElMessage({showClose: true,message: '拒绝访问',type: 'error',center: true,duration: 3000})
         break;
       case 401:
         
         break;
       case 504:
-        ElMessage({showClose: true,message: '网络超时',type: 'error',center,duration: '3000'})
+        ElMessage({showClose: true,message: '网络超时',type: 'error',center: true,duration: 3000})
         break
       default:
-        ElMessage({showClose: true,message: data.message,type: 'error',center,duration: '3000'})
+        ElMessage({showClose: true,message: data.message,type: 'error',center: true,duration: 3000})
         break
     }
   } else if(error.message) {
-    if(error.message.include('timeout')) {
-      ElMessage({showClose: true,message: '网络超时',type: 'error',center,duration: '3000'})
+    if(error.message.includes('timeout')) {
+      ElMessage({showClose: true,message: '网络超时',type: 'error',center: true,duration: 3000})
     } else {
-      ElMessage({showClose: true,message: data.message,type: 'error',center,duration: '3000'})
+      ElMessage({showClose: true,message: data.message,type: 'error',center: true,duration: 3000})
     }
   }
   return Promise.reject(error)
 }
 
 request.interceptors.request.use(config => {
-  const token = window.seeionStorage.getItem('token')
+  // const token = window.seeionStorage.getItem('token')
 
   // 如果token存在
   // 让每个请求携带自定义的token
-  token && (config.headers['Access-Token'] = token)
+  // token && (config.headers['Access-Token'] = token)
   return config
 }, err)
 
@@ -89,9 +89,9 @@ export default function (method, url, params,config = {}) {
   })
   .catch(error =>{
     if(error.status === 404) {
-      ElMessage({showClose: true,message: '服务接口未找到!',type: 'error',center,duration: '3000'})
+      ElMessage({showClose: true,message: '服务接口未找到!',type: 'error',center: true,duration: 3000})
     } else {
-      ElMessage({showClose: true,message: error,type: 'error',center,duration: '3000'})
+      ElMessage({showClose: true,message: error,type: 'error',center: true,duration: 3000})
     }
   })
 }

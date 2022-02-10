@@ -9,10 +9,10 @@
 <template>
   <div class="header">
     <div class="user-box">
-      <el-avatar :size="60" :src="userInfo.userAvatar"></el-avatar>
+      <el-avatar :size="60" :src="userInfo.avatar"></el-avatar>
       <div class="user-info">
-        <div class="user-text">早安，{{userInfo.user}} ，祝你开心每一天！</div>
-          <div>{{userInfo.company}}－{{userInfo.department}}－{{userInfo.position}}</div>
+        <div class="user-text">早安，{{userInfo.username}} ，祝你开心每一天！</div>
+          <div>{{userInfo.department}}－{{userInfo.position}}</div>
       </div>
     </div>
   </div>

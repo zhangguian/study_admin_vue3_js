@@ -4,7 +4,7 @@
  * @Author: zhangguian
  * @Date: 2021-12-20 11:55:55
  * @LastEditors: zhangguian
- * @LastEditTime: 2021-12-21 15:05:11
+ * @LastEditTime: 2021-12-27 20:00:01
 -->
 <template>
   <div>
@@ -36,14 +36,8 @@ export default {
   name: 'IviewVue3JsWorkbench',
   components: {WorkHeader,ProList,ProDynamic},
   setup() {
-    const data = reactive({
-      userInfo: {
-        user: 'zhangguian',
-        userAvatar: require('@/assets/avatar.jpg'),
-        company: '平安科技',
-        department: '前端技术部',
-        position: '前端工程师',
-      },
+    const state = reactive({
+      userInfo: JSON.parse(sessionStorage.getItem('userInfo')),
       proList: [
         {proName: '飞天计划', proDesc: '那是一种内在的东西，他们到达不了，也无法触及的', proPercent: 45},
         {proName: '飞天计划', proDesc: '那是一种内在的东西，他们到达不了，也无法触及的', proPercent: 90},
@@ -86,7 +80,7 @@ export default {
     }
 
     return {
-      ...toRefs(data),
+      ...toRefs(state),
     }
   }
 };
