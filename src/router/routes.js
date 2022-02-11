@@ -10,7 +10,7 @@ import Main from '_c/main'
 
 export default [
   {
-    path: '/login',
+    path: '/',
     name: 'login',
     meta: { hideInMenu: true, title: "登录" },
     component: () => import('@/views/login/Login.vue')

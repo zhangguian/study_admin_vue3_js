@@ -6,7 +6,7 @@
  * @LastEditors: zhangguian
  * @LastEditTime: 2021-12-19 15:40:20
  */
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import routes from './routes'
 
@@ -21,7 +21,7 @@ import 'nprogress/nprogress.css'
 // }
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 
